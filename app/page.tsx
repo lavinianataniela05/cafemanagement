@@ -1,65 +1,62 @@
-import React from "react";
-import { SidebarDemo } from "@/components/mainpage/sidebar";
+// import React from "react";
+// import { SidebarDemo } from "@/components/mainpage/sidebar";
 
+// export default function Home() {
+//   return <div className="flex h-screen w-screen flex-col items-center justify-center bg-gray-100 dark:bg-neutral-800">
+//     <SidebarDemo />
+//     </div>;
+// }
+// app/page.tsx
+
+"use client";
+import React, { useState } from "react";
+import { Sidebar } from "@/components/mainpage/sidebar";
+import React, { useEffect } from "react";
+
+import { 
+  DashboardPage,
+  MenuOrderPage,
+  ReservationPage,
+  PaymentPage,
+  LogoutPage
+} from "@/components/mainpage/index"; // Adjusted to explicitly point to the index file
+import { useEffect } from "react";
+useEffect(() => {
+  console.log("Component mounted");
+}, []);
 export default function Home() {
-  return <div className="flex h-screen w-screen flex-col items-center justify-center bg-gray-100 dark:bg-neutral-800">
-    <SidebarDemo />
-    </div>;
+  const [open, setOpen] = useState(true);
+  const [activePage, setActivePage] = useState("dashboard");
+
+  const renderPage = () => {
+    switch (activePage) {
+      case "dashboard": return <DashboardPage onNavigate={setActivePage} />;
+      case "menu-order": return <MenuOrderPage setActivePage={setActivePage} />;
+      case "reservation": return <ReservationPage />;
+      case "payment": return <PaymentPage />;
+      case "logout": return <LogoutPage />;
+      default: return <DashboardPage onNavigate={setActivePage} />;
+    }
+  };
+
+  function cn(...classes: string[]): string {
+    return classes.filter(Boolean).join(" ");
+  }
+  return (
+    <div className={cn(
+      "flex h-screen w-full bg-neutral-100 dark:bg-neutral-900",
+      "overflow-hidden"
+    )}>
+      <Sidebar 
+        open={open} 
+        setOpen={setOpen}
+        activePage={activePage}
+        setActivePage={setActivePage}
+      />
+
+      <main className="flex-1 overflow-y-auto p-6">
+        {renderPage()}
+      </main>
+    </div>
+  );
 }
-
-// import { Button } from "@/components/ui/button"
-
-// export default function Home() {
-//   return (
-//     <div>
-//     <h1 className="text-3xl font-bold underline">
-//       Hello world!
-//     </h1>
-//     <Button>Click me</Button>
-//   </div>
-//   );
-// }
-
-// 'use client';
-
-// import { useEffect, useState } from 'react';
-
-// type Menu = {
-//   id: number;
-//   itemName: string;
-//   itemType: string;
-//   price: number;
-// };
-
-// export default function Home() {
-//   const [menuList, setMenuList] = useState<Menu[]>([]);
-
-//   useEffect(() => {
-//     const fetchMenu = async () => {
-//       try {
-//         const res = await fetch('/api/menu');
-//         const data = await res.json();
-//         setMenuList(data);
-//       } catch (error) {
-//         console.error('Gagal fetch data menu:', error);
-//       }
-//     };
-
-//     fetchMenu();
-//   }, []);
-
-//   return (
-//     <main className="p-6">
-//       <h1 className="text-2xl font-bold mb-4">Menu Café</h1>
-//       <ul className="space-y-4">
-//         {menuList.map((menu) => (
-//           <li key={menu.id} className="border p-4 rounded-lg shadow">
-//             <h2 className="text-xl font-semibold">{menu.itemName}</h2>
-//             <p>Jenis: {menu.itemType}</p>
-//             <p>Harga: Rp {menu.price.toLocaleString()}</p>
-//           </li>
-//         ))}
-//       </ul>
-//     </main>
-//   );
-// }

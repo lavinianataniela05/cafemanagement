@@ -1,11 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import { Sidebar } from "@/components/Sidebar";
-import { Dashboard } from "@/components/Dashboard";
-import { MenuOrderPage } from "@/components/MenuOrderPage";
-import { ReservationPage } from "@/components/ReservationPage";
-import { PaymentPage } from "@/components/PaymentPage";
-import { LogoutPage } from "@/components/LogoutPage";
+import { Sidebar } from "@/components/mainpage/sidebar";
+import { DashboardPage } from "@/components/mainpage/DashboardPage";
+import { MenuOrderPage } from "@/components/mainpage/MenuOrderPage";
+import { ReservationPage } from "@/components/mainpage/ReservationPage";
+import { PaymentPage } from "@/components/mainpage/PaymentPage";
+import { LogoutPage } from "@/components/mainpage/LogoutPage";
 import { cn } from "@/lib/utils";
 
 export default function DashboardPage() {

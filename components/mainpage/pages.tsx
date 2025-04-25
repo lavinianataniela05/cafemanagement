@@ -13,6 +13,7 @@ export const Dashboard = ({ onNavigate }: { onNavigate: (key: string) => void })
   return <div>Dashboard Page</div>;
 };
 
+
 export const MenuPage = () => {
   // MenuPage component implementation
   return <div>Menu Page</div>;
@@ -36,4 +37,9 @@ export const PaymentPage = () => {
 export const LogoutPage = () => {
   // LogoutPage component implementation
   return <div>Logout Page</div>;
+};
+
+export const profile = () => {
+  // MenuPage component implementation
+  return <div>Profile</div>;
 };
