@@ -1,8 +1,8 @@
-// components/MenuOrderPage.tsx
 "use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils"
+
 
 interface MenuItem {
   id: number;
@@ -180,6 +180,8 @@ export const MenuOrderPage: React.FC<{ setActivePage: (page: string) => void }> 
   const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
   return (
+    <div className="min-h-screen bg-gradient-to-b from-[#f8f1e5] to-[#f0e2cc] py-10 sm:px-6 lg:px-8">
+
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
       {/* Menu Section */}
       <div className="lg:col-span-2">
@@ -193,7 +195,7 @@ export const MenuOrderPage: React.FC<{ setActivePage: (page: string) => void }> 
               className={cn(
                 "px-4 py-2 rounded-full text-sm font-medium",
                 activeCategory === category
-                  ? "bg-amber-500 text-white"
+                  ? "bg-amber-800 text-white"
                   : "bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300"
               )}
             >
@@ -218,7 +220,7 @@ export const MenuOrderPage: React.FC<{ setActivePage: (page: string) => void }> 
                 <div className="flex justify-between items-start">
                   <div>
                     <h3 className="font-semibold text-lg dark:text-white">{item.name}</h3>
-                    <p className="text-amber-600 dark:text-amber-400 font-medium">
+                    <p className="text-amber-900 dark:text-amber-700 font-medium">
                       Rp {item.price.toLocaleString()}
                     </p>
                     <span className="text-xs text-neutral-500 dark:text-neutral-400">
@@ -229,7 +231,7 @@ export const MenuOrderPage: React.FC<{ setActivePage: (page: string) => void }> 
                     onClick={() => addToCart(item)}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    className="bg-amber-500 hover:bg-amber-600 text-white px-3 py-1 rounded-lg text-sm transition"
+                    className="bg-amber-900 hover:bg-amber-800 text-white px-3 py-1 rounded-lg text-sm transition"
                   >
                     Add +
                   </motion.button>
@@ -302,7 +304,7 @@ export const MenuOrderPage: React.FC<{ setActivePage: (page: string) => void }> 
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-lg mt-6 transition"
+                className="w-full bg-amber-900 hover:bg-amber-800 text-white py-3 rounded-lg mt-6 transition"
                 onClick={() => setActivePage("payment")}
                 disabled={cart.length === 0}
               >
@@ -313,5 +315,7 @@ export const MenuOrderPage: React.FC<{ setActivePage: (page: string) => void }> 
         </div>
       </div>
     </div>
+    </div>
   );
 };
+

@@ -1,134 +1,81 @@
-// // lib/auth.ts
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import { AuthOptions } from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
+import { compare } from "bcrypt";
+import { prisma } from "./prisma"; // Pastikan path ini benar
 
-import { PrismaAdapter } from "@next-auth/prisma-adapter"
-import { prisma } from "./prisma"
-import { NextAuthOptions, Session, User } from "next-auth"
-import CredentialsProvider from "next-auth/providers/credentials"
-import { JWT } from "next-auth/jwt"
-
-declare module "next-auth" {
-  interface Session {
-    user: {
-      name?: string | null
-      email?: string | null
-      image?: string | null
-      role?: string
-    }
-  }
-}
-
-declare module "next-auth" {
-  interface User {
-    role?: string
-  }
-}
-
-export const authOptions: NextAuthOptions = {
+export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
+  session: { strategy: "jwt" },
+  pages: { signIn: "/login" },
   providers: [
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        email: { label: "Email", type: "email" },
+        email: { label: "Email", type: "text" },
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials) {
-        const user = await prisma.user.findUnique({
-          where: { email: credentials?.email }
-        })
-
-        if (user && credentials?.password === user.password) { // In production, use proper hashing!
-          return {
-            id: user.id,
-            email: user.email,
-            role: user.role
-          }
+        if (!credentials?.email || !credentials?.password) {
+          return null;
         }
-        return null
+
+        // Cari user di Staff
+        const staff = await prisma.staff.findUnique({
+          where: { email: credentials.email }
+        });
+
+        // Jika staff ditemukan
+        if (staff) {
+          // Gunakan compare untuk verifikasi password
+          const passwordValid = await compare(credentials.password, staff.password);
+          if (!passwordValid) return null;
+
+          return {
+            id: String(staff.id),
+            email: staff.email,
+            name: staff.name,
+            role: staff.role,
+            type: "staff"
+          };
+        }
+
+        // Cari di Customer jika tidak ditemukan di Staff
+        const customer = await prisma.customer.findUnique({
+          where: { email: credentials.email }
+        });
+
+        if (customer) {
+          const passwordValid = await compare(credentials.password, customer.password);
+          if (!passwordValid) return null;
+
+          return {
+            id: String(customer.id),
+            email: customer.email,
+            name: customer.nama,
+            role: customer.role,
+            type: "customer"
+          };
+        }
+
+        return null;
       }
     })
   ],
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user }: { token: any; user?: any }) {
       if (user) {
-        token.role = user.role
+        token.id = user.id;
+        token.role = user.role;
+        token.type = user.type;
       }
-      return token
+      return token;
     },
-    async session({ session, token }: { session: Session; token: JWT }) {
-      if (session.user) {
-        session.user.role = token.role as string | undefined
-      }
-      return session
+    async session({ session, token }: { session: any; token: any }) {
+      session.user.id = token.id;
+      session.user.role = token.role;
+      session.user.type = token.type;
+      return session;
     }
-  },
-  pages: {
-    signIn: '/auth/login'
   }
-}
-// import type { NextAuthOptions } from "next-auth"
-// import CredentialsProvider from "next-auth/providers/credentials"
-
-// export const authOptions: NextAuthOptions = {
-// //   providers: [
-// //     GitHubProvider({
-// //       clientId: process.env.GITHUB_ID!,
-// //       clientSecret: process.env.GITHUB_SECRET!,
-// //     }),
-// //   ],
-// //   secret: process.env.NEXTAUTH_SECRET,
-// //   callbacks: {
-// //     async session({ session, token, user }) {
-// //       // Bisa tambahkan data tambahan di sini kalau perlu
-// //       return session
-// //     },
-// providers: [
-//     CredentialsProvider({
-//       name: "Credentials",
-//       credentials: {
-//         email: { label: "Email", type: "text" },
-//         password: { label: "Password", type: "password" },
-//       },
-//       async authorize(credentials, req) {
-//         // Logika cek login (panggil API, cek DB, dll)
-//         if (
-//           credentials?.email === "admin@example.com" &&
-//           credentials?.password === "admin123"
-//         ) {
-//           return { id: "1", name: "Admin", email: "admin@example.com" }
-//         }
-//         return null
-//       },
-//     }),
-//   ]
-// }
-// lib/auth.ts
-
-// import CredentialsProvider from "next-auth/providers/credentials"
-// import type { NextAuthOptions } from "next-auth"
-
-// export const authOptions: NextAuthOptions = {
-//   providers: [
-//     CredentialsProvider({
-//       name: "Credentials",
-//       credentials: {
-//         email: { label: "Email", type: "text" },
-//         password: { label: "Password", type: "password" },
-//       },
-//       async authorize(credentials) {
-//         // Ganti logika ini dengan validasi yang sesungguhnya (contoh pakai DB)
-//         if (
-//           credentials?.email === "admin@example.com" &&
-//           credentials?.password === "admin123"
-//         ) {
-//           return { id: "1", name: "Admin", email: "admin@example.com" }
-//         }
-//         return null
-//       },
-//     }),
-//   ],
-//   pages: {
-//     signIn: "/login", // custom login page (opsional)
-//   },
-//   secret: process.env.NEXTAUTH_SECRET,
-// }
+};

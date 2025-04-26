@@ -1648,26 +1648,29 @@ export namespace Prisma {
 
   export type CustomerMinAggregateOutputType = {
     id: number | null
-    createdAt: Date | null
     nama: string | null
     email: string | null
     noTelp: string | null
+    password: string | null
+    role: $Enums.Role | null
   }
 
   export type CustomerMaxAggregateOutputType = {
     id: number | null
-    createdAt: Date | null
     nama: string | null
     email: string | null
     noTelp: string | null
+    password: string | null
+    role: $Enums.Role | null
   }
 
   export type CustomerCountAggregateOutputType = {
     id: number
-    createdAt: number
     nama: number
     email: number
     noTelp: number
+    password: number
+    role: number
     _all: number
   }
 
@@ -1682,26 +1685,29 @@ export namespace Prisma {
 
   export type CustomerMinAggregateInputType = {
     id?: true
-    createdAt?: true
     nama?: true
     email?: true
     noTelp?: true
+    password?: true
+    role?: true
   }
 
   export type CustomerMaxAggregateInputType = {
     id?: true
-    createdAt?: true
     nama?: true
     email?: true
     noTelp?: true
+    password?: true
+    role?: true
   }
 
   export type CustomerCountAggregateInputType = {
     id?: true
-    createdAt?: true
     nama?: true
     email?: true
     noTelp?: true
+    password?: true
+    role?: true
     _all?: true
   }
 
@@ -1793,10 +1799,11 @@ export namespace Prisma {
 
   export type CustomerGroupByOutputType = {
     id: number
-    createdAt: Date
     nama: string
     email: string
     noTelp: string
+    password: string
+    role: $Enums.Role
     _count: CustomerCountAggregateOutputType | null
     _avg: CustomerAvgAggregateOutputType | null
     _sum: CustomerSumAggregateOutputType | null
@@ -1820,39 +1827,43 @@ export namespace Prisma {
 
   export type CustomerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    createdAt?: boolean
     nama?: boolean
     email?: boolean
     noTelp?: boolean
+    password?: boolean
+    role?: boolean
     reservations?: boolean | Customer$reservationsArgs<ExtArgs>
     _count?: boolean | CustomerCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["customer"]>
 
   export type CustomerSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    createdAt?: boolean
     nama?: boolean
     email?: boolean
     noTelp?: boolean
+    password?: boolean
+    role?: boolean
   }, ExtArgs["result"]["customer"]>
 
   export type CustomerSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    createdAt?: boolean
     nama?: boolean
     email?: boolean
     noTelp?: boolean
+    password?: boolean
+    role?: boolean
   }, ExtArgs["result"]["customer"]>
 
   export type CustomerSelectScalar = {
     id?: boolean
-    createdAt?: boolean
     nama?: boolean
     email?: boolean
     noTelp?: boolean
+    password?: boolean
+    role?: boolean
   }
 
-  export type CustomerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "nama" | "email" | "noTelp", ExtArgs["result"]["customer"]>
+  export type CustomerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nama" | "email" | "noTelp" | "password" | "role", ExtArgs["result"]["customer"]>
   export type CustomerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     reservations?: boolean | Customer$reservationsArgs<ExtArgs>
     _count?: boolean | CustomerCountOutputTypeDefaultArgs<ExtArgs>
@@ -1867,10 +1878,11 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      createdAt: Date
       nama: string
       email: string
       noTelp: string
+      password: string
+      role: $Enums.Role
     }, ExtArgs["result"]["customer"]>
     composites: {}
   }
@@ -2296,10 +2308,11 @@ export namespace Prisma {
    */
   interface CustomerFieldRefs {
     readonly id: FieldRef<"Customer", 'Int'>
-    readonly createdAt: FieldRef<"Customer", 'DateTime'>
     readonly nama: FieldRef<"Customer", 'String'>
     readonly email: FieldRef<"Customer", 'String'>
     readonly noTelp: FieldRef<"Customer", 'String'>
+    readonly password: FieldRef<"Customer", 'String'>
+    readonly role: FieldRef<"Customer", 'Role'>
   }
     
 
@@ -5040,22 +5053,25 @@ export namespace Prisma {
 
   export type StaffMinAggregateOutputType = {
     id: number | null
-    createdAt: Date | null
     name: string | null
+    email: string | null
+    password: string | null
     role: $Enums.Role | null
   }
 
   export type StaffMaxAggregateOutputType = {
     id: number | null
-    createdAt: Date | null
     name: string | null
+    email: string | null
+    password: string | null
     role: $Enums.Role | null
   }
 
   export type StaffCountAggregateOutputType = {
     id: number
-    createdAt: number
     name: number
+    email: number
+    password: number
     role: number
     _all: number
   }
@@ -5071,22 +5087,25 @@ export namespace Prisma {
 
   export type StaffMinAggregateInputType = {
     id?: true
-    createdAt?: true
     name?: true
+    email?: true
+    password?: true
     role?: true
   }
 
   export type StaffMaxAggregateInputType = {
     id?: true
-    createdAt?: true
     name?: true
+    email?: true
+    password?: true
     role?: true
   }
 
   export type StaffCountAggregateInputType = {
     id?: true
-    createdAt?: true
     name?: true
+    email?: true
+    password?: true
     role?: true
     _all?: true
   }
@@ -5179,8 +5198,9 @@ export namespace Prisma {
 
   export type StaffGroupByOutputType = {
     id: number
-    createdAt: Date
     name: string
+    email: string
+    password: string
     role: $Enums.Role
     _count: StaffCountAggregateOutputType | null
     _avg: StaffAvgAggregateOutputType | null
@@ -5205,8 +5225,9 @@ export namespace Prisma {
 
   export type StaffSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    createdAt?: boolean
     name?: boolean
+    email?: boolean
+    password?: boolean
     role?: boolean
     orders?: boolean | Staff$ordersArgs<ExtArgs>
     _count?: boolean | StaffCountOutputTypeDefaultArgs<ExtArgs>
@@ -5214,26 +5235,29 @@ export namespace Prisma {
 
   export type StaffSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    createdAt?: boolean
     name?: boolean
+    email?: boolean
+    password?: boolean
     role?: boolean
   }, ExtArgs["result"]["staff"]>
 
   export type StaffSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    createdAt?: boolean
     name?: boolean
+    email?: boolean
+    password?: boolean
     role?: boolean
   }, ExtArgs["result"]["staff"]>
 
   export type StaffSelectScalar = {
     id?: boolean
-    createdAt?: boolean
     name?: boolean
+    email?: boolean
+    password?: boolean
     role?: boolean
   }
 
-  export type StaffOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "name" | "role", ExtArgs["result"]["staff"]>
+  export type StaffOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password" | "role", ExtArgs["result"]["staff"]>
   export type StaffInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     orders?: boolean | Staff$ordersArgs<ExtArgs>
     _count?: boolean | StaffCountOutputTypeDefaultArgs<ExtArgs>
@@ -5248,8 +5272,9 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      createdAt: Date
       name: string
+      email: string
+      password: string
       role: $Enums.Role
     }, ExtArgs["result"]["staff"]>
     composites: {}
@@ -5676,8 +5701,9 @@ export namespace Prisma {
    */
   interface StaffFieldRefs {
     readonly id: FieldRef<"Staff", 'Int'>
-    readonly createdAt: FieldRef<"Staff", 'DateTime'>
     readonly name: FieldRef<"Staff", 'String'>
+    readonly email: FieldRef<"Staff", 'String'>
+    readonly password: FieldRef<"Staff", 'String'>
     readonly role: FieldRef<"Staff", 'Role'>
   }
     
@@ -9479,10 +9505,11 @@ export namespace Prisma {
 
   export const CustomerScalarFieldEnum: {
     id: 'id',
-    createdAt: 'createdAt',
     nama: 'nama',
     email: 'email',
-    noTelp: 'noTelp'
+    noTelp: 'noTelp',
+    password: 'password',
+    role: 'role'
   };
 
   export type CustomerScalarFieldEnum = (typeof CustomerScalarFieldEnum)[keyof typeof CustomerScalarFieldEnum]
@@ -9514,8 +9541,9 @@ export namespace Prisma {
 
   export const StaffScalarFieldEnum: {
     id: 'id',
-    createdAt: 'createdAt',
     name: 'name',
+    email: 'email',
+    password: 'password',
     role: 'role'
   };
 
@@ -9599,20 +9627,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'DateTime'
-   */
-  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-    
-
-
-  /**
-   * Reference to a field of type 'DateTime[]'
-   */
-  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
-    
-
-
-  /**
    * Reference to a field of type 'String'
    */
   export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
@@ -9627,13 +9641,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Boolean'
-   */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
-    
-
-
-  /**
    * Reference to a field of type 'Role'
    */
   export type EnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role'>
@@ -9644,6 +9651,27 @@ export namespace Prisma {
    * Reference to a field of type 'Role[]'
    */
   export type ListEnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -9669,19 +9697,21 @@ export namespace Prisma {
     OR?: CustomerWhereInput[]
     NOT?: CustomerWhereInput | CustomerWhereInput[]
     id?: IntFilter<"Customer"> | number
-    createdAt?: DateTimeFilter<"Customer"> | Date | string
     nama?: StringFilter<"Customer"> | string
     email?: StringFilter<"Customer"> | string
     noTelp?: StringFilter<"Customer"> | string
+    password?: StringFilter<"Customer"> | string
+    role?: EnumRoleFilter<"Customer"> | $Enums.Role
     reservations?: ReservationListRelationFilter
   }
 
   export type CustomerOrderByWithRelationInput = {
     id?: SortOrder
-    createdAt?: SortOrder
     nama?: SortOrder
     email?: SortOrder
     noTelp?: SortOrder
+    password?: SortOrder
+    role?: SortOrder
     reservations?: ReservationOrderByRelationAggregateInput
   }
 
@@ -9691,18 +9721,20 @@ export namespace Prisma {
     AND?: CustomerWhereInput | CustomerWhereInput[]
     OR?: CustomerWhereInput[]
     NOT?: CustomerWhereInput | CustomerWhereInput[]
-    createdAt?: DateTimeFilter<"Customer"> | Date | string
     nama?: StringFilter<"Customer"> | string
     noTelp?: StringFilter<"Customer"> | string
+    password?: StringFilter<"Customer"> | string
+    role?: EnumRoleFilter<"Customer"> | $Enums.Role
     reservations?: ReservationListRelationFilter
   }, "id" | "email">
 
   export type CustomerOrderByWithAggregationInput = {
     id?: SortOrder
-    createdAt?: SortOrder
     nama?: SortOrder
     email?: SortOrder
     noTelp?: SortOrder
+    password?: SortOrder
+    role?: SortOrder
     _count?: CustomerCountOrderByAggregateInput
     _avg?: CustomerAvgOrderByAggregateInput
     _max?: CustomerMaxOrderByAggregateInput
@@ -9715,10 +9747,11 @@ export namespace Prisma {
     OR?: CustomerScalarWhereWithAggregatesInput[]
     NOT?: CustomerScalarWhereWithAggregatesInput | CustomerScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Customer"> | number
-    createdAt?: DateTimeWithAggregatesFilter<"Customer"> | Date | string
     nama?: StringWithAggregatesFilter<"Customer"> | string
     email?: StringWithAggregatesFilter<"Customer"> | string
     noTelp?: StringWithAggregatesFilter<"Customer"> | string
+    password?: StringWithAggregatesFilter<"Customer"> | string
+    role?: EnumRoleWithAggregatesFilter<"Customer"> | $Enums.Role
   }
 
   export type ReservationWhereInput = {
@@ -9856,35 +9889,39 @@ export namespace Prisma {
     OR?: StaffWhereInput[]
     NOT?: StaffWhereInput | StaffWhereInput[]
     id?: IntFilter<"Staff"> | number
-    createdAt?: DateTimeFilter<"Staff"> | Date | string
     name?: StringFilter<"Staff"> | string
+    email?: StringFilter<"Staff"> | string
+    password?: StringFilter<"Staff"> | string
     role?: EnumRoleFilter<"Staff"> | $Enums.Role
     orders?: OrderListRelationFilter
   }
 
   export type StaffOrderByWithRelationInput = {
     id?: SortOrder
-    createdAt?: SortOrder
     name?: SortOrder
+    email?: SortOrder
+    password?: SortOrder
     role?: SortOrder
     orders?: OrderOrderByRelationAggregateInput
   }
 
   export type StaffWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    email?: string
     AND?: StaffWhereInput | StaffWhereInput[]
     OR?: StaffWhereInput[]
     NOT?: StaffWhereInput | StaffWhereInput[]
-    createdAt?: DateTimeFilter<"Staff"> | Date | string
     name?: StringFilter<"Staff"> | string
+    password?: StringFilter<"Staff"> | string
     role?: EnumRoleFilter<"Staff"> | $Enums.Role
     orders?: OrderListRelationFilter
-  }, "id">
+  }, "id" | "email">
 
   export type StaffOrderByWithAggregationInput = {
     id?: SortOrder
-    createdAt?: SortOrder
     name?: SortOrder
+    email?: SortOrder
+    password?: SortOrder
     role?: SortOrder
     _count?: StaffCountOrderByAggregateInput
     _avg?: StaffAvgOrderByAggregateInput
@@ -9898,8 +9935,9 @@ export namespace Prisma {
     OR?: StaffScalarWhereWithAggregatesInput[]
     NOT?: StaffScalarWhereWithAggregatesInput | StaffScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Staff"> | number
-    createdAt?: DateTimeWithAggregatesFilter<"Staff"> | Date | string
     name?: StringWithAggregatesFilter<"Staff"> | string
+    email?: StringWithAggregatesFilter<"Staff"> | string
+    password?: StringWithAggregatesFilter<"Staff"> | string
     role?: EnumRoleWithAggregatesFilter<"Staff"> | $Enums.Role
   }
 
@@ -10085,60 +10123,67 @@ export namespace Prisma {
   }
 
   export type CustomerCreateInput = {
-    createdAt?: Date | string
     nama: string
     email: string
     noTelp: string
+    password: string
+    role?: $Enums.Role
     reservations?: ReservationCreateNestedManyWithoutCustomerInput
   }
 
   export type CustomerUncheckedCreateInput = {
     id?: number
-    createdAt?: Date | string
     nama: string
     email: string
     noTelp: string
+    password: string
+    role?: $Enums.Role
     reservations?: ReservationUncheckedCreateNestedManyWithoutCustomerInput
   }
 
   export type CustomerUpdateInput = {
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nama?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     noTelp?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: ReservationUpdateManyWithoutCustomerNestedInput
   }
 
   export type CustomerUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nama?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     noTelp?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: ReservationUncheckedUpdateManyWithoutCustomerNestedInput
   }
 
   export type CustomerCreateManyInput = {
     id?: number
-    createdAt?: Date | string
     nama: string
     email: string
     noTelp: string
+    password: string
+    role?: $Enums.Role
   }
 
   export type CustomerUpdateManyMutationInput = {
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nama?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     noTelp?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
   }
 
   export type CustomerUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nama?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     noTelp?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
   }
 
   export type ReservationCreateInput = {
@@ -10273,52 +10318,59 @@ export namespace Prisma {
   }
 
   export type StaffCreateInput = {
-    createdAt?: Date | string
     name: string
+    email: string
+    password: string
     role?: $Enums.Role
     orders?: OrderCreateNestedManyWithoutStaffInput
   }
 
   export type StaffUncheckedCreateInput = {
     id?: number
-    createdAt?: Date | string
     name: string
+    email: string
+    password: string
     role?: $Enums.Role
     orders?: OrderUncheckedCreateNestedManyWithoutStaffInput
   }
 
   export type StaffUpdateInput = {
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     orders?: OrderUpdateManyWithoutStaffNestedInput
   }
 
   export type StaffUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     orders?: OrderUncheckedUpdateManyWithoutStaffNestedInput
   }
 
   export type StaffCreateManyInput = {
     id?: number
-    createdAt?: Date | string
     name: string
+    email: string
+    password: string
     role?: $Enums.Role
   }
 
   export type StaffUpdateManyMutationInput = {
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
   }
 
   export type StaffUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
   }
 
@@ -10499,17 +10551,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -10525,6 +10566,13 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type EnumRoleFilter<$PrismaModel = never> = {
+    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
+  }
+
   export type ReservationListRelationFilter = {
     every?: ReservationWhereInput
     some?: ReservationWhereInput
@@ -10537,10 +10585,11 @@ export namespace Prisma {
 
   export type CustomerCountOrderByAggregateInput = {
     id?: SortOrder
-    createdAt?: SortOrder
     nama?: SortOrder
     email?: SortOrder
     noTelp?: SortOrder
+    password?: SortOrder
+    role?: SortOrder
   }
 
   export type CustomerAvgOrderByAggregateInput = {
@@ -10549,18 +10598,20 @@ export namespace Prisma {
 
   export type CustomerMaxOrderByAggregateInput = {
     id?: SortOrder
-    createdAt?: SortOrder
     nama?: SortOrder
     email?: SortOrder
     noTelp?: SortOrder
+    password?: SortOrder
+    role?: SortOrder
   }
 
   export type CustomerMinOrderByAggregateInput = {
     id?: SortOrder
-    createdAt?: SortOrder
     nama?: SortOrder
     email?: SortOrder
     noTelp?: SortOrder
+    password?: SortOrder
+    role?: SortOrder
   }
 
   export type CustomerSumOrderByAggregateInput = {
@@ -10583,20 +10634,6 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -10613,6 +10650,27 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type EnumRoleWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoleWithAggregatesFilter<$PrismaModel> | $Enums.Role
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumRoleFilter<$PrismaModel>
+    _max?: NestedEnumRoleFilter<$PrismaModel>
+  }
+
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type BoolFilter<$PrismaModel = never> = {
@@ -10707,6 +10765,20 @@ export namespace Prisma {
     customerId?: SortOrder
   }
 
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
@@ -10757,17 +10829,11 @@ export namespace Prisma {
     capacity?: SortOrder
   }
 
-  export type EnumRoleFilter<$PrismaModel = never> = {
-    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
-    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
-  }
-
   export type StaffCountOrderByAggregateInput = {
     id?: SortOrder
-    createdAt?: SortOrder
     name?: SortOrder
+    email?: SortOrder
+    password?: SortOrder
     role?: SortOrder
   }
 
@@ -10777,30 +10843,22 @@ export namespace Prisma {
 
   export type StaffMaxOrderByAggregateInput = {
     id?: SortOrder
-    createdAt?: SortOrder
     name?: SortOrder
+    email?: SortOrder
+    password?: SortOrder
     role?: SortOrder
   }
 
   export type StaffMinOrderByAggregateInput = {
     id?: SortOrder
-    createdAt?: SortOrder
     name?: SortOrder
+    email?: SortOrder
+    password?: SortOrder
     role?: SortOrder
   }
 
   export type StaffSumOrderByAggregateInput = {
     id?: SortOrder
-  }
-
-  export type EnumRoleWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
-    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    not?: NestedEnumRoleWithAggregatesFilter<$PrismaModel> | $Enums.Role
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumRoleFilter<$PrismaModel>
-    _max?: NestedEnumRoleFilter<$PrismaModel>
   }
 
   export type StaffScalarRelationFilter = {
@@ -10985,12 +11043,12 @@ export namespace Prisma {
     connect?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
   }
 
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
-  }
-
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type EnumRoleFieldUpdateOperationsInput = {
+    set?: $Enums.Role
   }
 
   export type ReservationUpdateManyWithoutCustomerNestedInput = {
@@ -11059,6 +11117,10 @@ export namespace Prisma {
     connectOrCreate?: OrderCreateOrConnectWithoutReservationInput | OrderCreateOrConnectWithoutReservationInput[]
     createMany?: OrderCreateManyReservationInputEnvelope
     connect?: OrderWhereUniqueInput | OrderWhereUniqueInput[]
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
   }
 
   export type BoolFieldUpdateOperationsInput = {
@@ -11181,10 +11243,6 @@ export namespace Prisma {
     connectOrCreate?: OrderCreateOrConnectWithoutStaffInput | OrderCreateOrConnectWithoutStaffInput[]
     createMany?: OrderCreateManyStaffInputEnvelope
     connect?: OrderWhereUniqueInput | OrderWhereUniqueInput[]
-  }
-
-  export type EnumRoleFieldUpdateOperationsInput = {
-    set?: $Enums.Role
   }
 
   export type OrderUpdateManyWithoutStaffNestedInput = {
@@ -11374,17 +11432,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -11397,6 +11444,13 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedEnumRoleFilter<$PrismaModel = never> = {
+    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -11426,20 +11480,6 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -11457,6 +11497,27 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type NestedEnumRoleWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoleWithAggregatesFilter<$PrismaModel> | $Enums.Role
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumRoleFilter<$PrismaModel>
+    _max?: NestedEnumRoleFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
@@ -11471,6 +11532,20 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -11504,23 +11579,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedEnumRoleFilter<$PrismaModel = never> = {
-    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
-    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
-  }
-
-  export type NestedEnumRoleWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
-    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    not?: NestedEnumRoleWithAggregatesFilter<$PrismaModel> | $Enums.Role
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumRoleFilter<$PrismaModel>
-    _max?: NestedEnumRoleFilter<$PrismaModel>
   }
 
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -11606,18 +11664,20 @@ export namespace Prisma {
   }
 
   export type CustomerCreateWithoutReservationsInput = {
-    createdAt?: Date | string
     nama: string
     email: string
     noTelp: string
+    password: string
+    role?: $Enums.Role
   }
 
   export type CustomerUncheckedCreateWithoutReservationsInput = {
     id?: number
-    createdAt?: Date | string
     nama: string
     email: string
     noTelp: string
+    password: string
+    role?: $Enums.Role
   }
 
   export type CustomerCreateOrConnectWithoutReservationsInput = {
@@ -11678,18 +11738,20 @@ export namespace Prisma {
   }
 
   export type CustomerUpdateWithoutReservationsInput = {
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nama?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     noTelp?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
   }
 
   export type CustomerUncheckedUpdateWithoutReservationsInput = {
     id?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nama?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     noTelp?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
   }
 
   export type TableUpsertWithWhereUniqueWithoutReservationsInput = {
@@ -11832,15 +11894,17 @@ export namespace Prisma {
   }
 
   export type StaffCreateWithoutOrdersInput = {
-    createdAt?: Date | string
     name: string
+    email: string
+    password: string
     role?: $Enums.Role
   }
 
   export type StaffUncheckedCreateWithoutOrdersInput = {
     id?: number
-    createdAt?: Date | string
     name: string
+    email: string
+    password: string
     role?: $Enums.Role
   }
 
@@ -11913,15 +11977,17 @@ export namespace Prisma {
   }
 
   export type StaffUpdateWithoutOrdersInput = {
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
   }
 
   export type StaffUncheckedUpdateWithoutOrdersInput = {
     id?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
   }
 

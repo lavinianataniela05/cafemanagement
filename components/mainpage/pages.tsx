@@ -39,7 +39,12 @@ export const LogoutPage = () => {
   return <div>Logout Page</div>;
 };
 
+export const AboutUs = () => {
+  // MenuPage component implementation
+  return <div>About Us</div>;
+};
 export const profile = () => {
   // MenuPage component implementation
   return <div>Profile</div>;
 };
+

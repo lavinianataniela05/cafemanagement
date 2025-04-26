@@ -17,10 +17,11 @@ datasource db {
 
 model Customer {
   id           Int           @id @default(autoincrement())
-  createdAt    DateTime      @default(now())
   nama         String
   email        String        @unique
   noTelp       String
+  password     String
+  role         Role          @default(USER)
   reservations Reservation[]
 }
 
@@ -47,11 +48,12 @@ model Table {
 }
 
 model Staff {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  name      String
-  role      Role     @default(USER)
-  orders    Order[]
+  id       Int     @id @default(autoincrement())
+  name     String
+  email    String  @unique
+  password String
+  role     Role    @default(ADMIN) // Staff sebaiknya default ADMIN
+  orders   Order[]
 }
 
 model Order {

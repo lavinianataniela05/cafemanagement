@@ -1,32 +1,22 @@
-// import React from "react";
-// import { SidebarDemo } from "@/components/mainpage/sidebar";
-
-// export default function Home() {
-//   return <div className="flex h-screen w-screen flex-col items-center justify-center bg-gray-100 dark:bg-neutral-800">
-//     <SidebarDemo />
-//     </div>;
-// }
-// app/page.tsx
-
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Sidebar } from "@/components/mainpage/sidebar";
-import React, { useEffect } from "react";
-
-import { 
+import {
   DashboardPage,
   MenuOrderPage,
   ReservationPage,
   PaymentPage,
   LogoutPage
-} from "@/components/mainpage/index"; // Adjusted to explicitly point to the index file
-import { useEffect } from "react";
-useEffect(() => {
-  console.log("Component mounted");
-}, []);
+} from "@/components/mainpage";
+
 export default function Home() {
   const [open, setOpen] = useState(true);
   const [activePage, setActivePage] = useState("dashboard");
+
+  // ✅ Correct: useEffect is inside the component
+  useEffect(() => {
+    console.log("Component mounted");
+  }, []);
 
   const renderPage = () => {
     switch (activePage) {
@@ -42,6 +32,7 @@ export default function Home() {
   function cn(...classes: string[]): string {
     return classes.filter(Boolean).join(" ");
   }
+
   return (
     <div className={cn(
       "flex h-screen w-full bg-neutral-100 dark:bg-neutral-900",

@@ -1,25 +1,25 @@
 "use client";
 import React, { useState } from "react";
 import { Sidebar } from "@/components/mainpage/sidebar";
-import { DashboardPage } from "@/components/mainpage/DashboardPage";
+import { DashboardPage as DashboardComponent } from "@/components/mainpage/DashboardPage";
 import { MenuOrderPage } from "@/components/mainpage/MenuOrderPage";
 import { ReservationPage } from "@/components/mainpage/ReservationPage";
 import { PaymentPage } from "@/components/mainpage/PaymentPage";
 import { LogoutPage } from "@/components/mainpage/LogoutPage";
 import { cn } from "@/lib/utils";
 
-export default function DashboardPage() {
+export default function Dashboard() {
   const [open, setOpen] = useState(true);
   const [activePage, setActivePage] = useState("dashboard");
 
   const renderPage = () => {
     switch (activePage) {
-      case "dashboard": return <Dashboard onNavigate={setActivePage} />;
-      case "menu-order": return <MenuOrderPage />;
+      case "dashboard": return <DashboardComponent onNavigate={setActivePage} />;
+      case "menu-order": return <MenuOrderPage setActivePage={setActivePage} />;
       case "reservation": return <ReservationPage />;
       case "payment": return <PaymentPage />;
       case "logout": return <LogoutPage />;
-      default: return <Dashboard onNavigate={setActivePage} />;
+      default: return <div>Page not found</div>;
     }
   };
 
