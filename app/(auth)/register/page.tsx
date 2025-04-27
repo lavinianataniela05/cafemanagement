@@ -26,7 +26,6 @@ export default function Register() {
         number: values.number,
         password: values.password,
       });
-      console.log("Parsed Data:", parsedData);
 
       const response = await axios.post("/api/user", parsedData);
       if (response.status === 201) {
