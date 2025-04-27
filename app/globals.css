@@ -1,9 +1,9 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+/* Removed invalid @custom-variant rule. Use a valid CSS approach if needed. */
 
-@theme inline {
+:root {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -114,9 +114,11 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    border: var(--color-border);
+    outline: 2px solid var(--color-ring / 50%);
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
   }
 }

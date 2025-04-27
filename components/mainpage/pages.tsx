@@ -1,11 +1,3 @@
-// // Exporting all the required components from this file
-// export { default as Dashboard } from "./Dashboard";
-// export { default as MenuPage } from "./MenuPage";
-// export { default as ReservationPage } from "./ReservationPage";
-// export { default as OrderPage } from "./OrderPage";
-// export { default as PaymentPage } from "./PaymentPage";
-// export { default as LogoutPage } from "./LogoutPage";
-// Pages.tsx
 import React from "react";
 
 export const Dashboard = ({ onNavigate }: { onNavigate: (key: string) => void }) => {
@@ -39,7 +31,7 @@ export const LogoutPage = () => {
   return <div>Logout Page</div>;
 };
 
-export const AboutUs = () => {
+export const AboutPage = () => {
   // MenuPage component implementation
   return <div>About Us</div>;
 };

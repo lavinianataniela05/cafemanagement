@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "../../lib/utils"
 
-
 interface MenuItem {
   id: number;
   name: string;
@@ -34,7 +33,7 @@ export const MenuOrderPage: React.FC<{ setActivePage: (page: string) => void }> 
       {
         id: 8,
         name: "Avocado Coffee",
-        price: 38000,
+        price: 45000,
         category: "Coffee",
         image: "https://cdn0-production-images-kly.akamaized.net/_n5H9JgrsAYmhwNg0_YQjw1Kzbo=/1x0:1000x563/469x260/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/4392073/original/037039300_1681280610-shutterstock_2259776777.jpg"
       },
@@ -90,7 +89,7 @@ export const MenuOrderPage: React.FC<{ setActivePage: (page: string) => void }> 
       {
         id: 16,
         name: "Chicken Katsu Curry",
-        price: 75000,
+        price: 80000,
         category: "Food",
         image: "https://blog.klikindomaret.com/wp-content/uploads/2020/01/77834-scaled.jpg"
       },

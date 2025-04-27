@@ -6,14 +6,15 @@ import {
   MenuOrderPage,
   ReservationPage,
   PaymentPage,
-  LogoutPage
+  LogoutPage,
+  AboutPage,
 } from "@/components/mainpage";
+import ProfilePage from "@/components/mainpage/ProfilePage";
 
 export default function Home() {
   const [open, setOpen] = useState(true);
   const [activePage, setActivePage] = useState("dashboard");
 
-  // ✅ Correct: useEffect is inside the component
   useEffect(() => {
     console.log("Component mounted");
   }, []);
@@ -24,6 +25,8 @@ export default function Home() {
       case "menu-order": return <MenuOrderPage setActivePage={setActivePage} />;
       case "reservation": return <ReservationPage />;
       case "payment": return <PaymentPage />;
+      case "about": return <AboutPage />;
+      case "profile": return <ProfilePage />;
       case "logout": return <LogoutPage />;
       default: return <DashboardPage onNavigate={setActivePage} />;
     }

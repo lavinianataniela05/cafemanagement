@@ -5,8 +5,6 @@ import { motion } from "framer-motion";
 interface PaymentPageProps {
   totalAmount?: number;
 }
-
-// Define common transition settings for slower animations
 const slowTransition = {
   duration: 0.8,
   ease: [0.2, 0.8, 0.4, 1]
@@ -42,12 +40,6 @@ export const PaymentPage = ({ totalAmount = 125000 }: PaymentPageProps) => {
       alert("Please fill in all credit card fields correctly.");
       return;
     }
-
-    if (paymentMethod === "paypal" && !paypalEmail.includes("@")) {
-      alert("Please enter a valid PayPal email.");
-      return;
-    }
-
     setIsPaid(true);
   };
 
@@ -103,13 +95,6 @@ export const PaymentPage = ({ totalAmount = 125000 }: PaymentPageProps) => {
                       className={`py-2 px-4 rounded-md border transition-all ${paymentMethod === "credit-card" ? "border-[#a97458] bg-[#f0e6d6] shadow-inner" : "border-[#d2b48c] hover:bg-[#f9f1e7]"}`}
                     >
                       <span className="text-sm">Card</span>
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setPaymentMethod("paypal")}
-                      className={`py-2 px-4 rounded-md border transition-all ${paymentMethod === "paypal" ? "border-[#a97458] bg-[#f0e6d6] shadow-inner" : "border-[#d2b48c] hover:bg-[#f9f1e7]"}`}
-                    >
-                      <span className="text-sm">PayPal</span>
                     </button>
                     <button
                       type="button"
@@ -224,8 +209,7 @@ export const PaymentPage = ({ totalAmount = 125000 }: PaymentPageProps) => {
                 <div className="flex items-center">
                   <div className="w-16 h-16 bg-[#e8d9c0] rounded-md mr-4"></div>
                   <div>
-                    <h4 className="font-medium">Caramel Macchiato</h4>
-                    <p className="text-sm text-[#7a5c44]">Size: Large</p>
+                    <h4 className="font-medium">Avocado Coffee</h4>
                   </div>
                 </div>
                 <div className="font-medium">{formatRupiah(45000)}</div>
@@ -235,8 +219,7 @@ export const PaymentPage = ({ totalAmount = 125000 }: PaymentPageProps) => {
                 <div className="flex items-center">
                   <div className="w-16 h-16 bg-[#e8d9c0] rounded-md mr-4"></div>
                   <div>
-                    <h4 className="font-medium">Avocado Toast</h4>
-                    <p className="text-sm text-[#7a5c44]">Add extra egg</p>
+                    <h4 className="font-medium">Chicken Katsu Curry</h4>
                   </div>
                 </div>
                 <div className="font-medium">{formatRupiah(80000)}</div>
