@@ -1,10 +1,11 @@
+import NextAuth from "next-auth";
+import { NextAuthOptions } from "next-auth";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { compare } from "bcrypt";
-import { prisma } from "./prisma"; // Pastikan path ini benar
+import { prisma } from "./prisma";
 
-export const authOptions: AuthOptions = {
+export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   session: { strategy: "jwt" },
   pages: { signIn: "/login" },
@@ -13,22 +14,22 @@ export const authOptions: AuthOptions = {
       name: "Credentials",
       credentials: {
         email: { label: "Email", type: "text" },
-        password: { label: "Password", type: "password" }
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
           return null;
         }
 
-        // Cari user di Staff
         const staff = await prisma.staff.findUnique({
-          where: { email: credentials.email }
+          where: { email: credentials.email },
         });
 
-        // Jika staff ditemukan
         if (staff) {
-          // Gunakan compare untuk verifikasi password
-          const passwordValid = await compare(credentials.password, staff.password);
+          const passwordValid = await compare(
+            credentials.password,
+            staff.password
+          );
           if (!passwordValid) return null;
 
           return {
@@ -36,17 +37,19 @@ export const authOptions: AuthOptions = {
             email: staff.email,
             name: staff.name,
             role: staff.role,
-            type: "staff"
+            type: "staff",
           };
         }
 
-        // Cari di Customer jika tidak ditemukan di Staff
         const customer = await prisma.customer.findUnique({
-          where: { email: credentials.email }
+          where: { email: credentials.email },
         });
 
         if (customer) {
-          const passwordValid = await compare(credentials.password, customer.password);
+          const passwordValid = await compare(
+            credentials.password,
+            customer.password
+          );
           if (!passwordValid) return null;
 
           return {
@@ -54,13 +57,13 @@ export const authOptions: AuthOptions = {
             email: customer.email,
             name: customer.nama,
             role: customer.role,
-            type: "customer"
+            type: "customer",
           };
         }
 
         return null;
-      }
-    })
+      },
+    }),
   ],
   callbacks: {
     async jwt({ token, user }: { token: any; user?: any }) {
@@ -76,6 +79,6 @@ export const authOptions: AuthOptions = {
       session.user.role = token.role;
       session.user.type = token.type;
       return session;
-    }
-  }
+    },
+  },
 };

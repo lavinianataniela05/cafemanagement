@@ -1,31 +1,31 @@
 // app/login/page.tsx
 
-"use client"
+"use client";
 
-import { signIn } from "next-auth/react"
-import { useState } from "react"
-import { useRouter } from "next/navigation"
+import { signIn } from "next-auth/react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState("")
-  const router = useRouter()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const router = useRouter();
 
   const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     const res = await signIn("credentials", {
       redirect: false,
       email,
       password,
-    })
+    });
 
     if (res?.error) {
-      setError("Email atau password salah")
+      setError("Email atau password salah");
     } else {
-      router.push("/") // redirect setelah login sukses
+      router.push("/"); // redirect setelah login sukses
     }
-  }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -67,5 +67,5 @@ export default function LoginPage() {
         </button>
       </form>
     </div>
-  )
+  );
 }
